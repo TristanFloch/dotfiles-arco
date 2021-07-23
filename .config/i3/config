@@ -314,13 +314,14 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
 
 exec --no-startup-id xfce4-power-manager &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec --no-startup-id dunst &
 
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 10 -locker blurlock -notify 30 -notifier dunst
+exec --no-startup-id xautolock -time 10 -locker blurlock -notify 30 -notifier dunst
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
 
