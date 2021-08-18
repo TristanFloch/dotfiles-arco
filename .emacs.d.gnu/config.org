@@ -48,13 +48,13 @@
 ** TODO Dashboard
 #+begin_src emacs-lisp
   (use-package dashboard
+    :ensure t
     :init      ;; tweak dashboard config before loading it
     (setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
-    (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
-    ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-    (setq dashboard-startup-banner "~/.emacs.d/emacs-dash.png")  ;; use custom image as banner
-    (setq dashboard-center-content nil) ;; set to 't' for centered content
+    (setq dashboard-banner-logo-title "Emacs > All")
+    (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+    ;;(setq dashboard-center-content nil) ;; set to 't' for centered content
     (setq dashboard-items '((recents . 5)
 			    (agenda . 5 )
 			    (bookmarks . 3)
@@ -74,7 +74,7 @@ This setting ensures that =emacsclient= always opens on dashboard rather than sc
 ** Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
-    :init (load-theme 'doom-horizon t)
+    :init (load-theme 'doom-palenight t)
     )
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
@@ -129,7 +129,7 @@ This setting ensures that =emacsclient= always opens on dashboard rather than sc
   (require 'all-the-icons)
   (use-package doom-modeline
     :init (doom-modeline-mode 1)
-    :custom ((doom-modeline-height 15)))
+    )
   #+end_src
 
 ** Line and column numbers
@@ -427,6 +427,20 @@ Org-tempo is a package that allows for =<s= followed by TAB to expand to a begin
   (use-package counsel-projectile
     :after projectile
     :config (counsel-projectile-mode)
+    )
+#+end_src
+
+#+begin_src emacs-lisp
+  (tf/leader-keys
+    "p" '(:ignore t :which-key "project")
+    "p p" '(projectile-switch-project :which-key "Switch project")
+    "p a" '(projectile-add-known-project :which-key "Add new project")
+    "p s" '(projectile-save-project-buffers :which-key "Save project files")
+    "p T" '(projectile-test-project :which-key "Test project")
+    "p d" '(projectile-remove-known-project :which-key "Remove known project")
+    "p k" '(projectile-kill-buffers :which-key "Kill project buffers")
+    "p c" '(projectile-compile-project :which-key "Compile project")
+    "p f" '(projectile-find-file :which-key "Find file in project")
     )
 #+end_src
 
